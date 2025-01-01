@@ -76,5 +76,4 @@ try {
 } catch (e) {
   console.error("Error general" + e);
 }
-	console.log("Bot Editado");
  console.log("Bot Works...");
