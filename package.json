@@ -1,15 +1,17 @@
 {
-  "name": "id-assigner-tgbot",
-  "version": "1.0.0",
+  "name": "movie-forwarder-tg-bot",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "node --watch --env-file .env index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "mongoose": "^8.9.3",
     "node-telegram-bot-api": "^0.66.0"
   },
   "engines": {

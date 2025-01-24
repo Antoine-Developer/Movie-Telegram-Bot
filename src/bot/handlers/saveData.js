@@ -1,12 +1,12 @@
-async function saveData(newData, fs, dataPath, bot, msgError) {
+async function saveData(newData, Model, msgError) {
   try {
-    const savedDataJSON = await fs.readFile(dataPath, "utf-8");
-    const savedData = await JSON.parse(savedDataJSON);
-    savedData.push(newData);
-    const data = await JSON.stringify(savedData);
-    await fs.writeFile(dataPath, data);
+    const newDocument = new Model({
+      id: newData
+    });
+    const savedDocument = await newDocument.save();
   } catch (e) {
     console.error(`${msgError}: ${e}`);
+    console.error(`Id del error ${newData}`);
     return false;
   }
   return true;

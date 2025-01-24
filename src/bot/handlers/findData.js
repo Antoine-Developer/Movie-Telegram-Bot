@@ -1,15 +1,14 @@
-async function findData(fs, recivedID, dataPath, msgError) {
+async function findData(recivedID, Model, msgError) {
   let finded = false;
   try {
-    const dataJSON = await fs.readFile(dataPath, "utf-8");
-    const data = await JSON.parse(dataJSON);
-    finded = data.some(dataID => dataID === recivedID);
+    const isInBD = await Model.findOne({ id: recivedID });
+    if (isInBD !== null) finded = true;
   } catch (e) {
     console.error(
       `${msgError},
       ID que se intento buscar ${recivedID},
-      error: ${e}` 
-      );
+      error: ${e}`
+    );
   }
   return finded;
 }

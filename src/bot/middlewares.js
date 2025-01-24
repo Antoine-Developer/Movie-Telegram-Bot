@@ -1,5 +1,5 @@
 function sendID(bot, movieStorageID, msg) {
-  const message = `Descargar - http://t.me/birdsender_bot?start=${msg.message_id}`;
+  const message = `http://t.me/birdsender_bot?start=${msg.message_id}`;
   bot.sendMessage(movieStorageID, `\`\`\`\n${message}\n\`\`\``, {
     parse_mode: 'MarkdownV2',
   });
@@ -17,18 +17,18 @@ function getRecivedMovieID (msg) {
   } else {return -1;}
 }
 
-function sendMovie(bot, botID,movieStorageID,recivedMovieID) {
+function sendMovie(bot, botID, movieStorageID, recivedMovieID) {
   const sendPlace = botID;
   bot.copyMessage(sendPlace, movieStorageID, recivedMovieID);
 }
 
-async function createBtnStructure(bot, chatID, msgInstructions) {
+async function createBtnStructure(bot, chatID, referralLink, msgInstructions) {
   const btn = {
     reply_markup : {
       inline_keyboard : [
         [
-          {text: "🚀Activar Acceso", url: "https://t.me/Ganar_saldo_via_bot?start=r01495673200", callback_data: "btn1"},
-          {text: "🛸Obtener Película", callback_data: "btn2"}  
+          {text: "🚀Activar Acceso", url: referralLink},
+          {text: "🛸Obtener Película", callback_data: "btn2"}
         ]  
       ]
     }
